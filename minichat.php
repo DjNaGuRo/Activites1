@@ -36,9 +36,19 @@ setcookie('pseudo',$_SESSION['pseudo'], time() + 30 * 24 *3600, null, null, fals
 
         <p>
 
-        <label for="pseudo">Pseudo</label> : <input type="text" name="pseudo" id="pseudo" /><br />
+        <?php 
+        if(isset($_COOKIE['pseudo']))
+        { 
+        ?>
+            <label for="pseudo">Pseudo</label> : 
+            <input type="text" name="pseudo" id="pseudo" value="<?php echo $_COOKIE["pseudo"]; ?>"/> .<br /><br />
+        <?php
+       }
+        else
+            echo '<label for="pseudo">Pseudo</label> : <input type="text" name="pseudo" id="pseudo" /><br /><br />';
+        ?>
 
-        <label for="message">Message</label> :  <input type="text" name="message" id="message" /><br />
+        <label for="message">Message</label> :  <input type="text" name="message" id="message" /><br /><br />
 
 
         <input type="submit" value="Envoyer" />
