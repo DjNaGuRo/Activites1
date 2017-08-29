@@ -87,7 +87,7 @@ if($nbre_msg % 10 != 0)
 
 <!--Formulaire permettant de choisir la page d'anciens messages à afficher -->
 <form method="post" action="minichat.php">
-    <?php
+<?php
 echo "Pages : ";
 if(isset($_POST['page']))
 {
@@ -112,11 +112,9 @@ else
 ?>
 <input type="submit" name="Afficher" value="Afficher">
 </form>
-
-// Récupération des 10 derniers messages
-
-$reponse = $bdd->query('SELECT pseudo, message FROM minichat ORDER BY ID DESC LIMIT 0, 10');
-
+<?php
+//Récupération des (10) messages de la page spécifiée
+$reponse = $bdd->query("SELECT pseudo, message FROM minichat ORDER BY ID DESC LIMIT $limit, 10");
 
 // Affichage de chaque message (toutes les données sont protégées par htmlspecialchars)
 
