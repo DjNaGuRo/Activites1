@@ -21,9 +21,11 @@ catch(Exception $e)
 
 // Insertion du message à l'aide d'une requête préparée
 
-$req = $bdd->prepare('INSERT INTO minichat (pseudo, message) VALUES(?, ?)');
+$req = $bdd->prepare('INSERT INTO minichat (pseudo, message) VALUES(:pseudo, :message)');
 
-$req->execute(array($_POST['pseudo'], $_POST['message']));
+$req->execute(array(
+	'message' => $_POST['message'],
+	'pseudo' => $_POST['pseudo']));
 
 
 // Redirection du visiteur vers la page du minichat
