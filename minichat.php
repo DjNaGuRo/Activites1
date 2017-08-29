@@ -1,3 +1,9 @@
+<?php 
+session_start();
+$_SESSION['pseudo'] = 'DjNaGuRo';
+setcookie('pseudo',$_SESSION['pseudo'], time() + 30 * 24 *3600, null, null, false, true);
+?>
+
 <!DOCTYPE html>
 
 <html>
